@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <style>
+        #isEnable {
+            float: left;
+        }
+
+        .formSource {
+            margin-right: 10px;
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+        }
+
+        .formSource .top_one,
+        .formSource .bottoms_one {
+            float: left;
+            width: 100px;
+        }
+
+        b {
+            font: 14px/1.6 "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        }
+
+        #binding_of_special_merchants .bottom_box ul #formSourceSpanOne,
+        #binding_of_special_merchants .bottom_box ul #formSourceSpanTwo {
+            float: left;
+            width: 10px;
+            margin-right: 5px;
+            color: #373F4A;
+            cursor: pointer;
+        }
+
+        #binding_of_special_merchants .bottom_box ul #formSourceSpanOne {
+            background: url('./img/radio.png') no-repeat -1px center;
+        }
+
+        #binding_of_special_merchants .bottom_box ul #formSourceSpanTwo {
+            background: url('./img/radio.png') no-repeat -18px center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="binding_of_special_merchants">
+        <p id="binding_of_special_merchants_add_p">新增</p>
+        <div id="add_Binding_of_special_merchants">
+
+
+            <div class="bottom" id="add_application_of_special_merchant_bottom_erji">
+                <ul class="shanghu" id="add_application_of_special_merchant_bottom_one_erji">
+                    <li class="active">
+                        <span class="span_one">全部</span>
+                        <i class="i_one"></i>
+                    </li>
+
+
+                    <li>
+                        <span class="span_four">已启用</span>
+                        <b></b>
+                        <i class="i_four"></i>
+                    </li>
+                    <li>
+                        <span class="span_four">未启用</span>
+                        <b></b>
+                        <i class="i_four"></i>
+                    </li>
+
+
+                </ul>
+
+                <div id="add_application_of_special_merchant_bottom_two_erji">
+                    <div class="list_two" id="add_application_of_special_merchant_bottom_ul_two_erji">
+                        <p id="add_p">数据正在加载中...</p>
+                        <span id="table_hr"></span>
+                        <table>
+                            <thead>
+                                <th class="weiyi_id">应用唯一UUID</th>
+                                <th class="bangding_names">支付通道绑定名称</th>
+                                <th class="yingyong_id">支付应用唯一UUID</th>
+                                <th class="tongdaos">支付通道</th>
+                                <th class="qiyong">是否启用</th>
+                                <td class="caozuos">操作</td>
+                            </thead>
+                            <tbody id="tbodys"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="bottom">
+                        <ul id="getPage" class="page"></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="binding_of_special_merchants_alert_table">
+            <div class="top" id="shadowTop"></div>
+            <div id="binding_of_special_merchants_alert_bottom_box_table" class="bottom_box">
+                <img src="./img/vector_38.png" id="alert_img">
+                <h3>特约商户绑定</h3>
+                <ul>
+                    <li>
+                        <label>支付通道绑定名称</label>
+                        <input id="zhifutongdao_bangdignmingcheng" type="text" />
+                        <p id="names_tongdaos">请填写支付通道名称</p>
+                    </li>
+                    <li>
+                        <label>应用唯一UUID</label>
+                        <span id="yingyong_id"></span>
+                    </li>
+                    <li>
+                        <label id="isEnable">是否启用</label>
+
+
+                        <div class='formSource floats'>
+
+                            <div class="top_one">
+                                <span id="formSourceSpanOne"></span>
+                                <b>是</b>
+                            </div>
+
+                            <div class="bottoms_one">
+                                <span id="formSourceSpanTwo"></span>
+                                <b>否</b>
+                            </div>
+
+                        </div>
+
+
+                    </li>
+                    <li class="li3">
+                        <div class="left">
+                            <label>成功授权的支付绑定</label>
+                        </div>
+
+
+                        <div class="right">
+                            <p class="select_p" id="select_p">请选择</p>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <ul id="list_xuanze">
+
+                </ul>
+                <p id="prompt_information">请选择成功绑定后的支付信息</p>
+                <p id="prompt_information_bottom"></p>
+                <div class="xuanze_but" style="overflow:hidden;">
+                    <p id="zuihou_quxiao">取消</p>
+                    <p id="zuihou_queren">确认</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="binding_of_special_merchants_alert_table_two">
+            <div class="top"></div>
+            <div id="binding_of_special_merchants_alert_bottom_box_table_two" class="bottom_box">
+                <img src="./img/vector_38.png" id="alert_img_two">
+                <h3>新增商户绑定</h3>
+                <ul>
+                    <li>
+                        <label>支付通道绑定名称</label>
+                        <input id="zhifutongdao_bangdignmingcheng_two" type="text" />
+                        <p id="names_tongdao">请填写支付通道名称</p>
+                    </li>
+
+                    <!-- <li>
+                        <label>支付应用唯一UUID</label>
+                        <input id="zhifu_yingyongweiyi_bangdignmingcheng_two" type="text" />
+                        <p id="pay_id_tongdao">请填写支付应用唯一UUID</p>
+                    </li>
+                    <li>
+                        <label>应用唯一UUID</label>
+                        <input id="yingyongweiyi_bangdignmingcheng_two" type="text" />
+                        <p id="weiyi_id">请填写应用唯一UUID</p>
+                    </li> -->
+                    <li style="overflow: hidden;">
+                        <div class="left" style="float: left;">
+                            <label>成功授权的支付绑定</label>
+                        </div>
+
+
+                        <div class="right" id="tondao_li" style="float: left;height: 40px;line-height: 40px;">
+                            <p class="select_p" id="select_p_two">请选择</p>
+                        </div>
+
+
+                    </li>
+                </ul>
+                <p id=""></p>
+                <ul id="list_xuanze_two">
+                    <!-- <li id="zhifu_tongdao_zhifubao">支付宝</li>
+                    <li id="zhifu_tongdao_weixin">微信</li> -->
+                </ul>
+                <p id="prompt_information_two">请选择支付通道</p>
+                <p id="prompt_information_bottom_two"></p>
+                <div class="xuanze_buts">
+                    <p id="zuihou_quxiao_two">取消</p>
+                    <p id="zuihou_queren_two">确认添加</p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div id="binding_of_special_merchants_alert">
+            <div class="top"></div>
+            <div id="binding_of_special_merchants_alert_bottom_box" class="bottom_box">
+                <h3>特约商户绑定</h3>
+                <ul>
+                    <li>
+                        <label>支付通道显示名称</label>
+                        <span></span>
+                    </li>
+                    <li>
+                        <label>用户费率</label>
+                        <span></span>
+                    </li>
+                    <li class="li3">
+                        <label>支付授权</label>
+                        <span></span>
+                        <b></b>
+                        <i></i>
+                    </li>
+                    <li>
+                        <label>备注说明</label>
+                        <span></span>
+                    </li>
+
+                </ul>
+                <div class="bottom_canlce">
+                    <span id="binding_of_special_merchants_alert_bottom_box_canlce">取消</span>
+                    <span id="binding_of_special_merchants_alert_bottom_box_queren">确认绑定</span>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- 提交成功弹框 -->
+        <div id="order_success_alert_sueccss">
+            <div class="top"></div>
+            <div class="content">
+                <div class="order_success_alert_content_top_sueccss"><span id="order_success_alert_cha_sueccss"></span>
+                    <div class="pic"><span></span></div>
+                </div>
+                <h3>提交成功</h3>
+                <div class="bottom"><span id="order_success_alert_success_sueccss">确认</span></div>
+            </div>
+        </div>
+
+        <!-- 错误的弹框 -->
+        <div id="order_success_alert">
+            <div class="tops"></div>
+            <div class="content">
+                <div class="order_success_alert_content_top"><span id="order_success_alert_cha"></span>
+                    <div class="pic"><span></span><i></i></div>
+                </div>
+                <h3 id="order_success_alert_h3">错误信息</h3>
+                <div class="bottom" id="order_success_alert_bottom">
+                    <span id="order_success_alert_success">确认</span></div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <script src="./js/bootstrap/jquery.min.js"></script>
+    <script>
+        var arr_box = null; // 获取到的列表
+        var len_page = 10;
+        var selected_data = null; // 设置被选中的那条数据的下标;
+        var arr_add = {}; // 新增的信息发送给后台；是新增的数据
+        var arr_modify={};
+        var serverAppCode = getUrlParam('serverAppCode');
+        var onOff = false;
+
+
+        //  var serverAppCode = 'e1dc1009-7ddf-4533-8a40-3199fde2d9c7';
+        //  console.log(serverAppCode);
+        function publicRequest(url, type, params, headers, nextPro, errorPro) {
+            // var object = new Object();
+            $.ajax({
+                url: url,
+                type: type,
+                data: params,
+                headers: headers,
+                success: function (res) {
+                    //  console.log(url);
+                    if (res.status == 1) {
+                        authorization();
+                    } else {
+                        nextPro(res);
+                    }
+                },
+                error: function (error) {
+                    errorPro(error);
+                }
+            })
+        }
+
+        setInterval(function () {
+            $.ajax({
+                url: '/payauth/api/refresh',
+                type: 'GET'
+            })
+        }, 600000);
+
+        // console.log('serverAppCode', serverAppCode)
+        // console.log('/payauth/api/bind/list?payAppUUID=' + serverAppCode + '&serverType=云表支付');
+        publicRequest('/payauth/api/bind/list?payAppUUID=' + serverAppCode + '&serverType=云表支付', 'GET',
+            null, null,
+            function (res) {
+                if (res.status == 200) {
+                    var arr = res.data.results;
+                  //  console.log(arr);
+                    if (arr.length == 0) {
+                        $('#add_p').text('当前没有数据记录，请新增数据');
+                    } else {
+                        $('#add_p').hide();
+                        $('#table_hr').hide();
+                        render(arr);
+                        page(arr);
+                        filters_fn(arr);
+                        arr_taotal(arr);
+                        arr_box = arr; // 获取到的列表
+                    }
+                } else if (res.status == 500) {
+                    // console.log(res);
+                    $('#order_success_alert').show();
+                    var len = res.msg ? res.msg.length : 0;
+                    // console.log(len)
+                    if (len >= 40) {
+                        var str = res.msg;
+                        str = str.slice(0, 40);
+                        str = str + '...';
+                        $('#order_success_alert_bottom').css({
+                            'marginTop': '15px'
+                        });
+                        $('#order_success_alert_h3').text(str);
+                    } else if (len == 0) {
+                        $('#order_success_alert_bottom').css({
+                            'marginTop': '30px'
+                        });
+                    } else {
+                        $('#order_success_alert_bottom').css({
+                            'marginTop': '30px'
+                        });
+                        $('#order_success_alert_h3').text(res.msg);
+                    }
+                }
+            },
+            function (err) {
+                $('#order_success_alert').show();
+            })
+
+        function authorization() {
+            var code = getUrlParam('code');
+            if (!code) {
+                getCode();
+            } else {
+                getCookie();
+            }
+        }
+
+        // 获取cookie
+        function getCookie() {
+            //  console.log(window.location.href,'getCookie函数');
+            var codeId = getUrlParam('code');
+            $.ajax({
+                url: '/payauth/api/authLogin?code=' + codeId,
+                type: 'GET',
+                success: function (res) {
+                    //console.log(res);
+                    // window.location.href = window.location.protocol + '//' + window.location.host + window
+                    //     .location.pathname
+                    window.location.href = window.location.protocol + '//' + window.location.host + window
+                        .location.pathname + '?serverAppCode=' + serverAppCode;
+                }
+            })
+        }
+
+
+        // 获取 code
+        function getCode() {
+            //   console.log(window.location.href,'getCode函数');
+            $.ajax({
+                url: '/payauth/api/bind/list?payAppUUID=' + serverAppCode + '&serverType=云表支付',
+                type: 'GET',
+                success: function (res) {
+                    if (res.status == 1) {
+                        var clientId = res.data.clientId;
+                        window.location.href =
+                            'https://www.iyunbiao.com/console/oauth2/authorize?response_type=code&client_id=' +
+                            clientId + '&redirect_uri=' + window.location.href;
+                    }
+                }
+            })
+        }
+
+        // 渲染列表
+        function render(arr,currentPage) {
+            var str = '';
+            var tbodys = document.getElementById('tbodys');
+            tbodys.innerHTML = '';
+            currentPage = currentPage ? currentPage : 1;
+            var start = currentPage * len_page - len_page;
+            var end = currentPage * len_page;
+            if (arr.length < end) {
+                end = arr.length;
+            }
+
+            arr_box=arr;
+            for (var i = start; i < end; i++) {
+                var tr = document.createElement('tr'); //
+                var td1 = document.createElement('td'); //  应用唯一UUID         payAppUUID
+                var td2 = document.createElement('td'); //  支付通道绑定名称      payChannelAlias
+                var td3 = document.createElement('td'); //  支付应用唯一UUID      payConfigID
+                var td4 = document.createElement('td'); //  支付通道              payChannel
+                var td5 = document.createElement('td'); //  是否启用
+                var td6 = document.createElement('td'); //  操作 自定义
+                tr.index = i;
+                td1.setAttribute('class', 'td_one');
+                td2.setAttribute('class', 'td_two');
+                td3.setAttribute('class', 'td_three');
+                td4.setAttribute('class', 'td_four');
+                td5.setAttribute('class', 'td_five');
+                td6.setAttribute('class', 'td_six');
+                tbodys.appendChild(tr);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                tr.appendChild(td6);
+                td1.innerHTML = arr[i].payAppUUID;
+                td2.innerHTML = arr[i].payChannelAlias;
+                td3.innerHTML = arr[i].payConfigID;
+                td4.innerHTML = arr[i].payChannel;
+                if (arr[i].switch) {
+                    td5.innerHTML = '是';
+                } else {
+                    td5.innerHTML = '否';
+                }
+                //  td6.innerHTML = '修改';
+                var span1 = document.createElement('span');
+                var span2 = document.createElement('span');
+                span1.innerHTML = '修改';
+                // span2.innerHTML = '';
+                td6.appendChild(span1);
+                //  td6.appendChild(span2);
+                td6.style.color = '#FB5040';
+                span1.style.color = '#FB5040';
+                span1.onclick = function () {
+                    var index = this.parentNode.parentNode.index;
+                    console.log(index,arr_box.length);
+                    selected_data = index; // 获取被选中的数据的下标
+                    var binding_of_tankuang = document.getElementById('binding_of_special_merchants_alert_table'); // 弹框显示
+                    var list_xuanze = document.getElementById('list_xuanze');
+                    document.getElementById('list_xuanze').innerHTML = '';
+                    $('#select_p').text('请选择');
+                  //  arr_modify=arr_box[selected_data];
+                    for(var n in arr_box[selected_data]){
+                        arr_modify[n]=arr_box[selected_data][n];
+                    }
+                    console.log(arr_modify);
+                    onOff = arr_box[selected_data].switch;
+                    onOffFn();
+                    // 获取成功绑定的列表；
+                    publicRequest('/payauth/api/getPayList', 'GET', null, null,
+                        function (res) {
+                            if (res.status == 200) {
+                                var arr_s = res.data.results; // arr_s 请求到的成功绑定的数据；
+                              //  console.log(arr_s);   // shadowTop
+                                var  h=$('#binding_of_special_merchants').outerHeight();
+                                $('#shadowTop').css('height',h);
+                                binding_of_tankuang.style.display = 'block';
+                                var list_ul = document.getElementById('list_xuanze');
+                                var bangding_alert = document.getElementById(
+                                    'zhifutongdao_bangdignmingcheng');
+                                var yingyong_id = document.getElementById('yingyong_id');
+                                bangding_alert.value = arr_box[index].payChannelAlias;
+                                yingyong_id.innerHTML = arr_box[index].payAppUUID;
+                                //  console.log(res)
+                                $('#prompt_information').hide();
+                                $('#prompt_information_bottom').hide();
+                                for (var j = 0; j < arr_s.length; j++) {
+
+                                    var li = document.createElement('li');
+                                    li.setAttribute('index_li', j);
+                                    list_ul.appendChild(li);
+                                    var str = arr_s[j].applymentUUID;
+
+                                    str = str.substring(str.length - 6);
+
+                                    if (arr_s[j].applymentPayType == 'AliPay') {
+                                        li.innerHTML = '支付宝' + str;
+                                    } else if (arr_s[j].applymentPayType == 'wechat') {
+                                        li.innerHTML = '微信' + str;
+                                    }
+                                    if (arr_s.length > 6) {
+                                        li.style.width = '183px'
+                                    } else {
+                                        li.style.width = '200px';
+                                    }
+                                  
+
+                                    li.onclick = function () {
+                                        var str = this.innerHTML;
+                                        $('#select_p').text(str);
+                                        $('#list_xuanze').hide();
+                                        document.getElementById('select_p').onOff = true;
+                                        var li_index = this.getAttribute('index_li');
+                                        // console.log(arr_s[li_index]);
+                                        console.log(arr_s[li_index].payConfigId);
+                                        arr_modify.payConfigID = arr_s[li_index]
+                                            .payConfigId;
+                                            console.log(arr_modify);
+                                    }
+                                }
+                            } else if (res.status == 500) {
+                                $('#prompt_information_bottom').show();
+                                $('#prompt_information_bottom').text(res.msg);
+                            }
+                        })
+
+
+                }
+            }
+        }
+
+        $('#binding_of_special_merchants_add_p').click(function () {
+            $('#names_tongdao').hide();
+            $('#prompt_information_two').hide();
+            $('#prompt_information_bottom_two').hide();
+            $('#zhifutongdao_bangdignmingcheng_two').val('');
+            $('#select_p_two').text('请选择');
+            $('#binding_of_special_merchants_alert_table_two').show();
+            arr_add = {}; // 新增的时候获取成功返回的签约信息
+            var list_xuanze_two = document.getElementById('list_xuanze_two');
+            list_xuanze_two.innerHTML = '';
+            publicRequest('/payauth/api/getPayList', 'GET', null, null, function (
+                res) {
+                if (res.status == 200) {
+                    var arr = res.data.results;
+                    if (arr.length == 0) {
+                        $('#prompt_information_two').html('请去支付授权管理页,申请数据');
+                        $('#prompt_information_two').show();
+                    }
+                    for (var i = 0; i < arr.length; i++) {
+                        var li = document.createElement('li');
+                        li.setAttribute('index', i);
+                        list_xuanze_two.appendChild(li);
+                        var str = arr[i].applymentUUID;
+                        str = str.substring(str.length - 6);
+                        if (arr[i].applymentPayType == 'AliPay') {
+                            li.innerHTML = '支付宝' + str;
+                        } else if (arr[i].applymentPayType == 'wechat') {
+                            li.innerHTML = '微信' + str;
+                        }
+                        if (arr.length > 6) {
+                            li.style.width = '183px';
+                        } else {
+                            li.style.width = '200px';
+                        }
+                        li.onclick = function () {
+                            var str = this.innerHTML;
+                            $('#select_p_two').text(str);
+                            $('#list_xuanze_two').hide();
+                            document.getElementById('select_p_two').onOff = true;
+                            var index_s = this.getAttribute('index');
+                            //  console.log('index_s', index_s);
+                            //  console.log(arr[index_s]);
+                            arr_add.payConfigID = arr[index_s].payConfigId;
+                            arr_add.payChannel = arr[index_s].applymentPayType; // 支付通道
+                            // console.log(arr_add);
+                        }
+                    }
+                }
+            })
+
+        })
+
+        $('#zuihou_queren').click(function () { // 确认修改
+            var datas = arr_modify;
+            //   console.log(arr_box[selected_data]);
+            //   console.log(datas);
+            var binding_alert = document.getElementById('binding_of_special_merchants_alert_table');
+            datas.payChannelAlias = $('#zhifutongdao_bangdignmingcheng').val();
+            $('#prompt_information').hide();
+            $('#prompt_information_bottom').hide();
+            $('#list_xuanze').hide();
+            var str = $('#select_p').text();
+            console.log(datas);
+            if ($('#zhifutongdao_bangdignmingcheng').val() == '' || $('#zhifutongdao_bangdignmingcheng').val()
+                .replace(/(^\s+)|(\s+$)/, '') == '') {
+                $('#names_tongdaos').show();
+                return;
+            }
+            if (str == '请选择') {
+                $('#prompt_information').show();
+                return;
+            }
+
+            //  这个是最后确认的按钮；
+            publicRequest('/payauth/api/bind/change_binding_config', 'PUT', JSON
+                .stringify(datas), {
+                    'Content-Type': 'application/json'
+                },
+                function (res) {
+                    if (res.status == 200) {
+                        $('#zhifutongdao_bangdignmingcheng').val('');
+                        binding_alert.style.display = 'none';
+                        $('#order_success_alert_sueccss').show();
+                    } else if (res.status == 500) {
+                        $('#prompt_information_bottom').show();
+                        $('#prompt_information_bottom').text(res.msg);
+                    }
+                })
+        })
+
+        $('#zhifutongdao_bangdignmingcheng').focus(function () {
+            $('#names_tongdaos').hide();
+        })
+
+        $('#zhifu_tongdao_zhifubao').click(function () {
+            var str = $('#zhifu_tongdao_zhifubao').text();
+            $('#select_p_two').text(str)
+            $('#list_xuanze_two').hide();
+            document.getElementById('select_p_two').onOff = true;
+        })
+        $('#zhifu_tongdao_weixin').click(function () {
+            var str = $('#zhifu_tongdao_weixin').text();
+            $('#select_p_two').text(str);
+            $('#list_xuanze_two').hide();
+            document.getElementById('select_p_two').onOff = true;
+        })
+
+        $('#zhifutongdao_bangdignmingcheng_two').blur(function () {
+            $('#names_tongdao').hide();
+        })
+
+        // 确认新增
+        $('#zuihou_queren_two').click(function () {
+            var binding_alert = document.getElementById('binding_of_special_merchants_alert_table_two');
+            if ($('#zhifutongdao_bangdignmingcheng_two').val() == '' || $('#zhifutongdao_bangdignmingcheng_two')
+                .val().replace(/(^\s+)|(\s+$)/, '') == '') {
+                $('#names_tongdao').show();
+                return;
+            }
+            var val = $('#select_p_two').text();
+            if (val == '请选择') {
+                $('#prompt_information_two').show();
+                return;
+            }
+            arr_add.payChannelAlias = $('#zhifutongdao_bangdignmingcheng_two').val();
+            arr_add.payAppUUID = serverAppCode; // 这个是会员服务器上面的serverAppCode
+            //console.log(arr_add);
+            publicRequest('/payauth/api/bind/add_binding', 'POST', JSON.stringify(
+                arr_add), {
+                'Content-Type': 'application/json'
+            }, function (res) {
+                if (res.status == 200) {
+                    binding_alert.style.display = 'none';
+                    $('#order_success_alert_sueccss').show();
+                } else if (res.status == 500) {
+                    $('#prompt_information_bottom_two').show();
+                    $('#prompt_information_bottom_two').text(res.msg);
+                }
+            })
+        })
+
+        // 分页
+        function page(arr, currentPage) {
+            const ul = document.getElementById("getPage")
+            // 首先要给初始化一下数据，
+            // 设置一个当前页码,一般默认为1；
+            currentPage = currentPage ? currentPage : 1;
+
+            var maxPage = null;
+            var num = parseInt(arr.length) % len_page;
+            if (num > 0) {
+                maxPage = parseInt(arr.length / len_page) + 1;
+            } else {
+                maxPage = parseInt(arr.length / len_page);
+            }
+            getData()
+
+
+            function getData() {
+                if (maxPage <= 5) {
+                    var html = '';
+                    for (var i = 1; i <= maxPage; i++) {
+                        if (currentPage == i) {
+                            html += '<li class="current" data-id=\'' + i + '\'>' + i + '</li>';
+                        } else {
+                            html += '<li data-id=\'' + i + '\'>' + i + '</li>';
+                        }
+                    }
+                    if (arr.length < len_page) {
+                        html = '';
+                    }
+                    ul.innerHTML = html;
+                } else {
+                    var start = currentPage - 2;
+                    start = start < 1 ? 1 : start;
+                    var end = start + 4;
+                    if (end >= maxPage) {
+                        end = maxPage;
+                        start = maxPage - 4;
+                    }
+                    var html = "";
+                    if (currentPage != 1) {
+                        var currentPages = currentPage - 1;
+                        html = '<li id="back_page" data-id=\'' + currentPages + '\'><</li>';
+                    } else if (currentPage == 1) {
+                        html = '<li id="back_page_one" data-id="1"><</li>';
+                    }
+                    for (var i = start; i <= end; i++) {
+                        if (i == currentPage) {
+                            html += '<li class="current" data-id=\'' + i + '\'>' + i + '</li>';
+                        } else {
+                            html += '<li data-id=\'' + i + '\'>' + i + '</li>';
+                        }
+                    }
+                    if (currentPage != maxPage) {
+                        var currentPages = currentPage + 1;
+                        html += '<li id="go_page" data-id=\'' + currentPages + '\' >></li>';
+                    } else if (currentPage == maxPage) {
+                        html += '<li data-id=\'' + currentPage + '\'>></li>';
+                    }
+                    // 获取ul元素
+
+                    ul.innerHTML = html;
+                    if ($('back_page_one')) {
+                        $('#back_page_one').css({
+                            "fontSize": "10px"
+                        });
+                    }
+                    if ($('back_page')) {
+                        $('#back_page').css({
+                            "fontSize": "10px"
+                        });
+                    }
+                    if ($('go_page')) {
+                        $('#go_page').css({
+                            "fontSize": "10px"
+                        });
+                    }
+                }
+
+            }
+
+
+
+            $('#getPage li').on('click', function (e) {
+                var index = e.target.getAttribute("data-id");
+                var currentPage = parseInt(index);
+               // console.log('currentPage',currentPage)
+                render(arr, currentPage);
+                page(arr, currentPage);
+            })
+
+        }
+
+        // 点击已启用和未启用
+        function filters_fn(arrs) {
+            var ul = document.getElementById(
+            'add_application_of_special_merchant_bottom_one_erji'); // 点击全部，编辑，申请，签约按钮的ul
+            var tbodys = document.getElementById('tbodys');
+            var li = ul.getElementsByTagName('li');
+            var i_doms = ul.getElementsByTagName('i');
+            for (var i = 0; i < li.length; i++) {
+                li[i].index = i;
+                li[i].onclick = function () {
+                    var text = this.children[0].innerHTML;
+                    tbodys.innerHTML = '';
+                    for (var n = 0; n < li.length; n++) {
+                        li[n].className = '';
+                        i_doms[n].style.display = 'none';
+                    }
+                    i_doms[this.index].style.display = 'block';
+                    this.className = "active";
+                    if (text == '全部') {
+                        render(arrs);
+                        page(arrs);
+                    } else if (text == '已启用') {
+                        var arr0ne = [];
+                        for (var j = 0; j < arrs.length; j++) {
+                            if (arrs[j]['switch']) {
+                                arr0ne.push(arrs[j]);
+                            }
+                        }
+                        render(arr0ne);
+                        page(arr0ne);
+                        if(arr0ne.length==0){
+                            $('#add_p').text('没有已启用数据');
+                            $('#add_p').show();
+                            $('#table_hr').show();
+                        }else{
+                            $('#add_p').hide();
+                            $('#table_hr').hide();
+                        }
+                    } else if (text == '未启用') {
+                        var arrTwo = [];
+                        for (var j = 0; j < arrs.length; j++) {
+                            if (!arrs[j]['switch']) {
+                                arrTwo.push(arrs[j]);
+                            }
+                        }
+                        render(arrTwo);
+                        page(arrTwo);
+                        if(arrTwo.length==0){
+                            console.log(arrTwo.length)
+                            $('#add_p').text('没有未启用数据');
+                            $('#add_p').show();
+                            $('#table_hr').show();
+                        }else{
+                            $('#add_p').hide();
+                            $('#table_hr').hide();
+                        }
+                    }
+
+                }
+            }
+        }
+
+        // 设置已签约下面的下划线的长度
+        function arr_taotal(arrs) {
+            var arr_one = [];
+            var ul = document.getElementById('add_application_of_special_merchant_bottom_one_erji');
+            var b = ul.getElementsByTagName('b');
+            var i_doms = ul.getElementsByTagName('i');
+            var arr_enabled = [];
+            var arr_noenabled = [];
+            // if (arrs.length > 0) {
+            //     b[0].innerHTML = '(' + arrs.length + ')';
+            //     var w = $('#add_application_of_special_merchant_bottom_one_erji').children("li").eq(1).width();
+            //     i_doms[1].style.width = w + 'px';
+            // }
+
+            for (var i = 0; i < arrs.length; i++) {
+                if (arrs[i]['switch']) {
+                    arr_enabled.push(arrs[i]);
+                    if (arr_enabled.length > 0) {
+                       // console.log(arr_enabled)
+                        b[0].innerHTML = '(' + arr_enabled.length + ')';
+                        var w = $('#add_application_of_special_merchant_bottom_one_erji').children("li").eq(1).width();
+                        i_doms[1].style.width = w + 'px';
+                    }
+                }
+                if (!arrs[i]['switch']) {
+                    arr_noenabled.push(arrs[i]);
+                   // console.log(arr_noenabled)
+                    if (arr_noenabled.length > 0) {
+                        b[1].innerHTML = '(' + arr_noenabled.length + ')';
+                        var w = $('#add_application_of_special_merchant_bottom_one_erji').children("li").eq(2).width();
+                        i_doms[2].style.width = w + 'px';
+                    }
+                }
+                if(arr_enabled.length==0){
+                    i_doms[1].style.width = '46px';
+                }
+                if(arr_noenabled.length==0){
+                    i_doms[2].style.width = '46px';
+                }
+                
+            }
+
+
+
+        }
+
+        $('#zuihou_quxiao_two').click(function () {
+            $('#binding_of_special_merchants_alert_table_two').hide();
+            document.getElementById('select_p_two').onOff = true;
+        })
+
+        $('#alert_img_two').click(function () {
+            document.getElementById('select_p_two').onOff = true;
+            $('#binding_of_special_merchants_alert_table_two').hide();
+        })
+
+        $('#formSourceSpanOne').click(function () {
+            onOff = true;
+            arr_modify.switch = true;
+            //console.log(arr_box[selected_data]);
+            onOffFn();
+        })
+        $('#formSourceSpanTwo').click(function () {
+            onOff = false;
+            arr_modify.switch = false;
+            //console.log(arr_box[selected_data]);
+            onOffFn();
+        })
+
+
+        function onOffFn() {
+            if (onOff) {
+                $('#formSourceSpanOne').css({
+                    'backgroundImage': 'url("./img/radio.png")',
+                    'backgroundPosition': '-1px center',
+                    'backgroundRepeat': 'no-repeat'
+                });
+                $('#formSourceSpanTwo').css({
+                    'backgroundImage': 'url("./img/radio.png")',
+                    'backgroundPosition': '-18px center',
+                    'backgroundRepeat': 'no-repeat'
+                })
+            } else {
+                $('#formSourceSpanOne').css({
+                    'backgroundImage': 'url("./img/radio.png")',
+                    'backgroundPosition': '-18px center',
+                    'backgroundRepeat': 'no-repeat'
+                });
+                $('#formSourceSpanTwo').css({
+                    'backgroundImage': 'url("./img/radio.png")',
+                    'backgroundPosition': '-1px center',
+                    'backgroundRepeat': 'no-repeat'
+                })
+            }
+        }
+
+
+        getidbanding()
+
+        function getidbanding() {
+            var binding_alert = document.getElementById('binding_of_special_merchants_alert_table');
+            var names = document.getElementById('zhifutongdao_bangdignmingcheng');
+            var binding_canlce = document.getElementById('alert_img');
+            var binding_queren = document.getElementById('zuihou_quxiao');
+            binding_canlce.onclick = function () {
+                binding_alert.style.display = 'none';
+            }
+            binding_queren.onclick = function () {
+               // console.log(names);
+                names.value = '';
+                binding_alert.style.display = 'none';
+            }
+        }
+
+        document.getElementById('select_p').onOff = true;
+        $('#select_p').click(function () {
+            $('#prompt_information').hide();
+            $('#prompt_information_bottom').hide()
+            if (this.onOff) {
+                $('#list_xuanze').show();
+            } else {
+                $('#list_xuanze').hide();
+            }
+            this.onOff = !this.onOff;
+        })
+
+        document.getElementById('select_p_two').onOff = true;
+        $('#select_p_two').click(function () {
+            $('#prompt_information_two').hide();
+            $('#prompt_information_bottom_two').hide()
+            if (this.onOff) {
+                $('#list_xuanze_two').show();
+            } else {
+                $('#list_xuanze_two').hide();
+            }
+            this.onOff = !this.onOff;
+        })
+
+        // 点击成功后的弹框
+        $('#order_success_alert_success_sueccss').click(function () {
+            $('#order_success_alert_sueccss').hide();
+            window.location.reload(); // 刷新当前页面
+        })
+
+        //获取截取到的参数
+        function getUrlParam(name) {
+
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)
+                return unescape(r[2]);
+            return null;
+
+        }
+
+        // 错误框隐藏
+        $('#order_success_alert_cha').click(function () {
+            $('#order_success_alert').hide();
+        })
+        $('#order_success_alert_success').click(function () {
+            $('#order_success_alert').hide();
+        })
+
+        function replaceChat(source, pos, newChar) { // 改写url;
+            if (pos < 0 || pos >= source.length || source.length == 0) {
+                return "invalid parameters...";
+            }
+            var iBeginPos = 0,
+                iEndPos = source.length;
+            var sFrontPart = source.substr(iBeginPos, pos);
+            var sTailPart = source.substr(pos + 1, source.length);
+            var sRet = sFrontPart + newChar + sTailPart;
+            return sRet;
+        }
+
+        //  console.log(replaceChat(window.location.href, findAll(window.location.href, '?')[1], "&"));
+
+        function findAll(a, x) { // 
+            var results = [],
+                len = a.length,
+                pos = 0;
+            while (pos < len) {
+                pos = a.indexOf(x, pos); // 搜索
+                if (pos === -1)
+                    break;
+                results.push(pos);
+                pos = pos + 1; // 从下一位置开始搜索
+            }
+            return results;
+        }
+    </script>
+
+</body>
+
+</html>

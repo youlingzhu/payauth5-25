@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div id="application_details_of_alipay_wechat">
+
+        <div id="application_details_of_alipay_title_wechat">
+            <div class="information_fill">
+                <img src="./img/vector_go.png"
+                    id="application_details_of_alipay_title_wechat_back" /><span>微信特约商户申请</span>
+            </div>
+        </div>
+
+        <div id="application_details_of_alipay_main_content_wechat">
+            <div class="top" id="application_details_of_alipay_content_h3_wechat">
+                <h3>基础信息</h3>
+            </div>
+            <div class="bottom" id="application_details_of_alipay_content_box_wechat">
+                <ul>
+                    <li>
+                        <label>商户名</label>
+                        <input id="name_shanghu" type="text" />
+                        <p id="wx_p_name">请填写商户名</p>
+                    </li>
+                    <li>
+                        <label>支付通道</label>
+                        <input id="tongdao_shanghu" type="text" value="微信支付授权" />
+                        <p id="wx_p_tongdao">请填写支付通道，如微信支付授权</p>
+                    </li>
+                    <li>
+                        <div>
+                            <label>备注说明</label>
+                        </div>
+
+                        <textarea id="textarea_dom"></textarea>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="application_details_of_alipay_content_bottom_wechat">
+            <p id="p_wx">确定</p>
+        </div>
+
+    </div>
+
+    <script src="./js/bootstrap/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var str = window.location.search;
+            if (str) {
+                str = decodeURI(str);
+            }
+
+            function getQuery(query) {
+                var strs = str.slice(1);
+                var arr = strs.split('&');
+                for (let i = 0; i < arr.length; i++) {
+                    var arrs = arr[i].split('=');
+                    if (arrs[0] == query) {
+                        return arrs[1]
+                    }
+                }
+            }
+
+            if (getQuery('name')) {
+                $('#name_shanghu').val(getQuery('name'));
+                $('#name_shanghu').attr('disabled', 'disabled');
+                $('#textarea_dom').attr('disabled', 'disabled');
+                $('#tongdao_shanghu').attr('disabled', 'disabled');
+            }
+
+            if (getQuery('value')) {
+                $('#textarea_dom').val(getQuery('value'));
+                $('#textarea_dom').attr('disabled', 'disabled');
+                $('#name_shanghu').attr('disabled', 'disabled');
+            }
+
+
+
+            $('#application_details_of_alipay_title_wechat_back').click(function () {
+                window.history.back();
+            })
+
+            $('#p_wx').click(function () {
+                if ($('#name_shanghu').val().length == 0) {
+                    $('#wx_p_name').show();
+                    return;
+                }
+                if ($('#tongdao_shanghu').val().length == 0) {
+                    $('#wx_p_tongdao').show();
+                    return;
+                }
+                var datas = {
+                    "mchName": $('#name_shanghu').val(),
+                    "payType": "WeChat",
+                    "applyment": {},
+                    "remarks": $('#textarea_dom').val()
+                };
+
+
+                $.ajax({
+                    url: 'http://dev-pay.latocc.com:8888/payauth/api/authApplyment/add',
+                    type: 'POST',
+                    data: JSON.stringify(datas),
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    },
+                    success: function (res) {
+                        //  window.location.href = 'authorize_wx.html';                    
+                        var clientId=res.data.clientId;
+                        if (res.status == 1) {
+                            authorization(clientId);
+                        }else{
+                            window.location.href = 'authorize_wx.html';
+                        }
+
+                    }
+                })
+            })
+
+            // 判断是否有cookie;
+            function authorization(clientId) {
+                    var code = getUrlParam('code');
+                    if (!code) {
+                        getCode(clientId);
+                    } else {
+                        getCookie();
+                    }
+            }
+   
+         
+
+            if(window.location.href.indexOf('code')!=-1){
+                getCookie();
+            }
+
+            // 获取cookie
+            function getCookie() {
+                var codeId = getUrlParam('code');
+                $.ajax({
+                    url: 'http://dev-pay.latocc.com:8888/payauth/api/authLogin?code=' + codeId,
+                    type: 'GET',
+                    success: function (res) {
+                        window.location.href = window.location.protocol + '//' + window.location
+                            .host + window
+                            .location.pathname;
+                    }
+                })
+            }
+
+
+            // 获取 code
+            function getCode(clientId) {
+                window.location.href = 'https://www.iyunbiao.com/console/oauth2/authorize?response_type=code&client_id=' +clientId + '&redirect_uri=' + window.location.href;
+            }
+
+
+
+
+           
+
+
+
+
+
+
+            var name_shanghu = document.getElementById('name_shanghu');
+            var wx_p_name = document.getElementById('wx_p_name');
+            var tongdao_shanghu = document.getElementById('tongdao_shanghu');
+            var wx_p_tongdao = document.getElementById('wx_p_tongdao');
+            name_shanghu.onblur = function () {
+                if (name_shanghu.value.length > 0) {
+                    wx_p_name.style.display = 'none';
+                } else {
+                    wx_p_name.style.display = 'block';
+                }
+            }
+
+            tongdao_shanghu.onblur = function () {
+                if (tongdao_shanghu.value.length > 0) {
+                    wx_p_tongdao.style.display = 'none';
+                } else {
+                    wx_p_tongdao.style.display = 'block';
+                }
+            }
+
+
+
+             //获取截取到的参数
+        function getUrlParam(name) {
+            var str = window.location.search.slice(1);
+            var arr = str.split('=');
+            return arr[1];
+        }
+
+
+
+
+
+
+
+
+        })
+    </script>
+
+</body>
+
+</html>

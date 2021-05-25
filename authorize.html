@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div id="application_of_special_merchant_main">
+        <div id="application_of_special_merchant">
+            <div class="information_fill"><img src="./img/vector_go.png"><span>特约商户申请</span></div>
+        </div>
+        <div id="add_application_of_special_merchant">
+            <div class="top" id="add_application_of_special_merchant_top">
+                <h3>新增特约商户申请</h3>
+                <ul>
+                    <li class="add_li_one" id="add_li_one">
+                        <!-- <a href="authorize_wechat.html"> -->
+                        <img src="./img/icon_weixin.png">
+                        <span class="span_one">微信支付<br />特约商户申请</span>
+                        <!-- </a> -->
+
+                    </li>
+                    <li class="add_li_two" id="add_li_two">
+                        <!-- <a href="authorize_alipay.html"> -->
+                        <img src="./img/icon_zhifubao.png">
+                        <span class="span_two">支付宝支付支付<br />特约商户申请</span>
+                        <!-- </a> -->
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom" id="add_application_of_special_merchant_bottom">
+                <ul id="add_application_of_special_merchant_bottom_one">
+                    <li class="active">
+                        <span class="span_one">全部</span>
+                        <i class="i_one"></i>
+                    </li>
+                    <li>
+                        <span class="span_two">编辑中</span>
+                        <b></b>
+                        <i class="i_two"></i>
+                    </li>
+                    <li>
+                        <span class="span_three">申请中</span>
+                        <b></b>
+                        <i class="i_three"></i>
+                    </li>
+                    <li>
+                        <span class="span_four">已签约</span>
+                        <b></b>
+                        <i class="i_four"></i>
+                    </li>
+                    <li>
+                        <span class="span_five">失效</span>
+                        <b></b>
+                        <i class="i_five"></i>
+                    </li>
+                </ul>
+
+                <div id="add_application_of_special_merchant_bottom_two">
+
+
+
+                    <div class="table">
+                        <p id="table_p">数据正在加载...</p>
+                        <span id="table_hr"></span>
+                        <table>
+                            <thead>
+                                <th class="bianhaos">申请单编号</th>
+                                <th class="shanghu_names">商户名称</th>
+                                <th class="zhuangtais">状态</th>
+                                <th class="tongdaos">支付通道</th>
+                                <th class="is_lianjies">链接</th>
+                                <th class='beizhus'>备注</th>
+                                <th class="caozuos">操作</th>
+                            </thead>
+
+                            <tbody id="tbodys">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bottom">
+                        <ul id="getPage" class="page"></ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 支付宝弹框 -->
+        <div id="application_details_of_alipay">
+
+            <div class="top"></div>
+            <div class="bottom_zhifubao">
+                <div id="application_details_of_alipay_title">
+                    <span class="order_success_alert_cha" id="zhifubao_cha"></span>
+                    <div class="information_fill">
+                        <span>支付宝特约商户申请</span>
+                    </div>
+                </div>
+
+                <div id="application_details_of_alipay_main_content">
+                    <!-- <div class="top" id="application_details_of_alipay_content_h3">
+                    <h3>基础信息</h3>
+                </div> -->
+                    <div class="bottom" id="application_details_of_alipay_content_box">
+                        <ul>
+                            <li>
+                                <label>商户名</label>
+                                <input id="name_shanghu" type="text" />
+                                <p id="alipay_p_name">请填写商户名</p>
+                            </li>
+                            <li>
+                                <label>支付通道</label>
+                                <input id="tongdao_shanghu" type="text" value="支付宝支付授权" />
+                                <p id="wx_p_tongdao">请填写支付通道，如支付宝支付授权</p>
+                            </li>
+                            <li>
+                                <div>
+                                    <label>备注说明</label>
+                                </div>
+                                <textarea id="textarea_dom"></textarea>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="application_details_of_alipay_content_bottom">
+                    <p id="p_one_cancel">取消</p>
+                    <p id="p_one">确定</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 微信弹框 -->
+        <div id="application_details_of_alipay_wechat">
+            <div class="top"></div>
+            <div class="bottom_zhifubao">
+                <div id="application_details_of_alipay_title_wechat">
+                    <div class="information_fill">
+                        <span class="order_success_alert_cha" id="wechat_cha"></span>
+                        <span>微信特约商户申请</span>
+                    </div>
+                </div>
+
+                <div id="application_details_of_alipay_main_content_wechat">
+                    <!-- <div class="top" id="application_details_of_alipay_content_h3_wechat">
+                    <h3>基础信息</h3>
+                </div> -->
+                    <div class="bottom" id="application_details_of_alipay_content_box_wechat">
+                        <ul>
+                            <li>
+                                <label>商户名</label>
+                                <input id="name_shanghu_wechat" type="text" />
+                                <p id="wx_p_name">请填写商户名</p>
+                            </li>
+                            <li>
+                                <label>支付通道</label>
+                                <input id="tongdao_shanghu_wechat" type="text" value="微信支付授权" />
+                                <p id="wx_p_tongdao">请填写支付通道，如微信支付授权</p>
+                            </li>
+                            <li>
+                                <div>
+                                    <label>备注说明</label>
+                                </div>
+
+                                <textarea id="textarea_dom_wechat"></textarea>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="application_details_of_alipay_content_bottom_wechat">
+                    <p id="p_wx_wechat_cancel">取消</p>
+                    <p id="p_wx_wechat">确定</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <!-- 错误弹框 -->
+    <div id="order_success_alert">
+        <div class="tops"></div>
+        <div class="content">
+            <div class="order_success_alert_content_top"><span id="order_success_alert_cha"></span>
+                <div class="pic"><span></span><i></i></div>
+            </div>
+            <h3 id="order_success_alert_h3">信息错误</h3>
+            <div class="bottom" id="order_success_alert_bottom">
+                <!-- <span id="order_success_alert_cancle">取消</span></div> -->
+                <span id="order_success_alert_success">确认</span></div>
+        </div>
+    </div>
+
+    <!-- 申请链接的警告框 -->
+    <div id="order_success_alert_jinggao">
+        <div class="tops"></div>
+        <div class="content content_jinggao">
+            <div class="order_success_alert_content_top"><span id="order_success_alert_cha_jianggao"></span>
+                <div class="pic"><span></span><i></i></div>
+            </div>
+            <h3 id="order_success_alert_h3_jinggao">请勿用之前已授权过的用户再次重新授权，否则会导致之前的授权申请的密钥失效</h3>
+            <div class="bottom" id="order_success_alert_bottom_jinggao">
+                <span id="order_success_alert_canlce_jinggao">取消</span>
+                <span id="order_success_alert_success_jinggao">确认</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="./js/bootstrap/jquery.min.js"></script>
+
+    <script>
+        var len_page = 10;
+        var selectEdit_or_payment = null; // 判断是新增还是编辑
+        var arr_one = []; // 获取具体的数据，包括分类信息 编辑中，申请中，已签约，失效   
+        var arr_index = null;
+        var arr_select = null;
+
+        function getParentUrl() {
+            var url = null;
+            if (parent !== window) {
+                try {
+                    url = parent.location.href;
+                } catch (e) {
+                    url = document.referrer;
+                }
+            }
+            return url;
+        }
+
+
+
+        function publicRequest(url, type, params, headers, nextPro, errorPro) {
+            let object = new Object();
+            $.ajax({
+                url: url,
+                type: type,
+                data: params,
+                headers: headers,
+                success: function (res) {
+                    console.log(res);
+                    if (res.status == 1) {
+                        authorization();
+                    } else {
+                        nextPro(res);
+                    }
+                },
+                error: function (error) {
+                    errorPro(error);
+                }
+            })
+        }
+
+
+        // 获取所有的支付申请单列表
+        publicRequest('/payauth/api/authApplyment/query?applymentId=', 'GET', null, null,
+            function (res) {
+                if (res.status == 200) {
+                    arr_one = res.data.results;
+                    if (arr_one.length == 0) {
+                        $('#table_p').text('没有找到数据记录');
+                    } else {
+                        // $('#table_p').remove();
+                        // $('#table_hr').remove();
+                        $('#table_p').hide();
+                        $('#table_hr').hide();
+                        render(arr_one); // 渲染函数  
+                        page(arr_one); // 分页
+                        filters_fn(arr_one); // 分类函数；
+                        arr_taotal(arr_one); // 记录多少条；
+                    }
+                } else if (res.status == 500) {
+                    var len = res.msg.length;
+                    //  $('#order_success_alert').show();
+                    if (len >= 40) {
+                        var str = res.msg;
+                        str = str.slice(0, 40);
+                        str = str + '...';
+                        $('#order_success_alert_bottom').css({
+                            'marginTop': '15px'
+                        });
+                        $('#order_success_alert_h3').text(str);
+                    } else {
+                        $('#order_success_alert_bottom').css({
+                            'marginTop': '30px'
+                        });
+                        $('#order_success_alert_h3').text(res.msg);
+                    }
+                }
+            },
+            function (err) {
+                //  $('#order_success_alert').show();
+            }
+        )
+
+
+        // 授权函数
+        function authorization() {
+            var code = getUrlParam('code');
+            if (!code) {
+                getCode();
+            } else {
+                getCookie();
+            }
+        }
+
+        // 获取cookie
+        function getCookie() {
+            var codeId = getUrlParam('code');
+            $.ajax({
+                url: '/payauth/api/authLogin?code=' + codeId,
+                type: 'GET',
+                success: function (res) {
+                   // console.log(res, 'getCookie函数');
+                    window.location.href = window.location.protocol + '//' + window
+                        .location.host + window
+                        .location.pathname;
+                }
+            })
+        }
+
+        // 获取 code
+        function getCode() {
+            $.ajax({
+                url: '/payauth/api/authApplyment/query?applymentId=',
+                type: 'GET',
+                success: function (res) {
+                    // console.log(res,'getCode函数');
+                    if (res.status == 1) {
+                        console.log(res, 'getCode函数');
+                        var clientId = res.data.clientId;
+                        window.location.href =
+                            'https://www.iyunbiao.com/console/oauth2/authorize?response_type=code&client_id=' +
+                            clientId + '&redirect_uri=' + window.location.href;
+                    }
+                }
+            })
+        }
+
+        // 10分钟一次授权
+        setInterval(function () {
+            $.ajax({
+                url: '/payauth/api/refresh',
+                type: 'GET'
+            })
+        }, 600000);
+
+        var get_src = null;
+
+        function render(arr, currentPage) { // 渲染列表
+            var str = '';
+            var tbodys = document.getElementById('tbodys');
+            tbodys.innerHTML = '';
+            currentPage = currentPage ? currentPage : 1;
+            var start = currentPage * len_page - len_page;
+            var end = currentPage * len_page;
+            if (arr.length < end) {
+                end = arr.length;
+            }
+            //  console.log(arr, currentPage)
+            arr_one = arr;
+            for (var i = start; i < end; i++) {
+                var tr = document.createElement('tr');
+                tr.setAttribute('index', i);
+                var td1 = document.createElement('td'); // 支付授权申请单ID // applymentUUID
+                var td2 = document.createElement('td'); // 申请公司名称    // applymentMchName
+                var td3 = document.createElement('td'); // 申请状态        // applymentStatus
+                var td4 = document.createElement('td'); // 申请类型        // applymentPayType
+                var td5 = document.createElement('td'); // 申请链接        //  
+                var td6 = document.createElement('td'); // 备注           // applymentRemark
+                var td7 = document.createElement('td'); // 操作           // 
+                tbodys.appendChild(tr);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                tr.appendChild(td6);
+                tr.appendChild(td7);
+                td1.setAttribute('class', 'td_one');
+                td2.setAttribute('class', 'td_two');
+                td3.setAttribute('class', 'td_three');
+                td4.setAttribute('class', 'td_four');
+                td5.setAttribute('class', 'td_five');
+                td6.setAttribute('class', 'td_six');
+                td7.setAttribute('class', 'td_sevens');
+                td1.innerHTML = arr[i].applymentUUID;
+                td2.innerHTML = arr[i].applymentMchName;
+                td3.innerHTML = arr[i].applymentStatus ? arr[i].applymentStatus : '';
+                td6.innerHTML = arr[i].applymentRemark ? arr[i].applymentRemark : '';
+                if (arr[i].applymentURL) {
+                    var a = document.createElement('a');
+                    td5.appendChild(a);
+                    a.innerHTML = '申请链接';
+                    a.style.textDecoration = 'none';
+                    a.style.color = '#373F4A';
+                    a.style.cursor = 'pointer';
+                    if (arr[i].applymentStatus == "已签约") {
+                        a.innerHTML = '';
+                    }
+                    if (arr[i].applymentPayType == 'AliPay') {
+                        a.setAttribute('data_src', arr[i].applymentURL);
+                        a.onclick = function () {
+                            $('#order_success_alert_jinggao').show();
+                            get_src = this.getAttribute('data_src');
+                        }
+                    }
+                    if (arr[i].applymentPayType == 'wechat') {
+                        a.href = authorize_wechat.html;
+                    }
+                }
+
+                if (arr[i].applymentStatus == '草稿') {
+                    td3.style.backgroundImage = "url('./img/ellipse_41_zhifu.png')";
+                }
+                if (arr[i].applymentStatus == '提交申请中') {
+                    td3.style.backgroundImage = "url('./img/ellipse_42_zhifu.png')";
+                    td3.style.textIndent = '2em';
+                }
+                if (arr[i].applymentStatus == '已签约') {
+                    td3.style.backgroundImage = "url('./img/ellipse_43_zhifu.png')";
+                }
+                if (arr[i].applymentStatus == '失效') {
+                    td3.style.backgroundImage = "url('./img/ellipse_44_zhifu.png')";
+                }
+
+
+                // if (arr[i].applymentStatus == '草稿') {
+                if (arr[i].applymentPayType == 'WeChat') {
+                    var a_children = document.createElement('a');
+                    td7.appendChild(a_children);
+                    a_children.innerHTML = '编辑';
+                    a_children.setAttribute('class', 'a_dom');
+                    a_children.style.color = 'rgb(251,80,64)';
+                    td7.style.cursor = "pointer";
+                    a_children.style.textDecoration = 'none';
+                    if (arr[i].applymentStatus == '已签约') {
+                        a_children.innerHTML = '';
+                    }
+                    a_children.onclick = function () {
+                        authorization();
+                        selectEdit_or_payment = false;
+                        var parents = this.parentNode.parentNode;
+                        var childs = parents.children;
+                        var shanghu_name = childs[1].innerHTML;
+                        var values = childs[5].innerHTML;
+                        $('#application_details_of_alipay_wechat').show();
+                        var h = 0;
+                        var autoH = $('#application_of_special_merchant_main').outerHeight();
+                        var windowH = $(window).height();
+                        h = autoH > windowH ? autoH : windowH;
+                        $('#application_details_of_alipay_wechat .top').css('height', h);
+                        $('#name_shanghu_wechat').val('');
+                        $('#textarea_dom_wechat').val('');
+                        $('#tongdao_shanghu_wechat').attr('disabled', 'disabled');
+                        $('#tongdao_shanghu_wechat').css('border', '1px solid transparent');
+                        $('#tongdao_shanghu_wechat').css('background', '#ffffff');
+                        $('#name_shanghu_wechat').val(shanghu_name);
+                        $('#textarea_dom_wechat').val(values);
+
+                    }
+                } else if (arr[i].applymentPayType == 'AliPay') {
+                    var a_children = document.createElement('a');
+                    td7.appendChild(a_children);
+                    a_children.innerHTML = '编辑';
+                    a_children.setAttribute('class', 'a_dom');
+                    a_children.style.color = 'rgb(251,80,64)';
+                    td7.style.cursor = "pointer";
+                    a_children.style.textDecoration = 'none';
+                    if (arr[i].applymentStatus == '已签约') {
+                        a_children.innerHTML = '';
+                    }
+                    a_children.onclick = function () {
+                        authorization();
+                        selectEdit_or_payment = false;
+                        var parents = this.parentNode.parentNode;
+                        var childs = parents.children;
+                        var shanghu_name = childs[1].innerHTML;
+                        var values = childs[5].innerHTML;
+                        $('#application_details_of_alipay').show();
+                        var h = 0;
+                        var autoH = $('#application_of_special_merchant_main').outerHeight();
+                        var windowH = $(window).height();
+                        h = autoH > windowH ? autoH : windowH;
+                        $('#application_details_of_alipay .top').css('height', h);
+                        $('#name_shanghu').val('');
+                        $('#textarea_dom').val('');
+                        $('#tongdao_shanghu').attr('disabled', 'disabled');
+                        $('#tongdao_shanghu').css('border', '1px solid transparent');
+                        $('#tongdao_shanghu').css('background', '#ffffff');
+                        $('#name_shanghu').val(shanghu_name);
+                        $('#textarea_dom').val(values);
+                        arr_index = this.parentNode.parentNode.getAttribute('index');
+                        //   console.log(arr_index);
+                        arr_select = arr_one[arr_index];
+                        //   console.log(arr_select)
+                    }
+                }
+                //  }
+                //  else {
+                //      td7.innerHTML = '已编辑';
+
+                //  }
+
+                if (arr[i].applymentPayType == 'WeChat') {
+                    td4.innerHTML = '微信';
+                }
+                if (arr[i].applymentPayType == 'AliPay') {
+                    td4.innerHTML = '支付宝';
+                }
+            }
+        }
+
+
+        $('#order_success_alert_canlce_jinggao').click(function () {
+            $('#order_success_alert_jinggao').hide();
+        });
+
+        $('#order_success_alert_success_jinggao').click(function () {
+            $('#order_success_alert_jinggao').hide();
+            // console.log(get_src);
+            window.open(get_src);
+        });
+
+        // 分页
+        function page(arr, currentPage) {
+            const ul = document.getElementById("getPage")
+            // 首先要给初始化一下数据，
+            // 设置一个当前页码,一般默认为1；
+            currentPage = currentPage ? currentPage : 1;
+
+            var maxPage = null;
+            var num = parseInt(arr.length) % len_page;
+            if (num > 0) {
+                maxPage = parseInt(arr.length / len_page) + 1;
+            } else {
+                maxPage = parseInt(arr.length / len_page);
+            }
+            getData()
+            // console.log('maxPage', maxPage)
+
+            function getData() {
+                if (maxPage <= 5) {
+                    var html = '';
+                    for (var i = 1; i <= maxPage; i++) {
+                        if (currentPage == i) {
+                            html += '<li class="current" data-id=\'' + i + '\'>' + i + '</li>';
+                        } else {
+                            html += '<li data-id=\'' + i + '\'>' + i + '</li>';
+                        }
+                    }
+                    if (arr.length < len_page) {
+                        html = '';
+                    }
+                    ul.innerHTML = html;
+                } else {
+                    var start = currentPage - 2;
+                    start = start < 1 ? 1 : start;
+                    var end = start + 4;
+                    if (end >= maxPage) {
+                        end = maxPage;
+                        start = maxPage - 4;
+                    }
+                    var html = "";
+                    if (currentPage != 1) {
+                        var currentPages = currentPage - 1;
+                        html = '<li id="back_page" data-id=\'' + currentPages + '\'><</li>';
+                    } else if (currentPage == 1) {
+                        html = '<li id="back_page_one" data-id="1"><</li>';
+                    }
+                    for (var i = start; i <= end; i++) {
+                        if (i == currentPage) {
+                            html += '<li class="current" data-id=\'' + i + '\'>' + i + '</li>';
+                        } else {
+                            html += '<li data-id=\'' + i + '\'>' + i + '</li>';
+                        }
+                    }
+                    if (currentPage != maxPage) {
+                        var currentPages = currentPage + 1;
+                        html += '<li id="go_page" data-id=\'' + currentPages + '\' >></li>';
+                    } else if (currentPage == maxPage) {
+                        html += '<li data-id=\'' + currentPage + '\'>></li>';
+                    }
+                    // 获取ul元素
+
+                    ul.innerHTML = html;
+                    if ($('back_page_one')) {
+                        $('#back_page_one').css({
+                            "fontSize": "10px"
+                        });
+                    }
+                    if ($('back_page')) {
+                        $('#back_page').css({
+                            "fontSize": "10px"
+                        });
+                    }
+                    if ($('go_page')) {
+                        $('#go_page').css({
+                            "fontSize": "10px"
+                        });
+                    }
+                }
+
+            }
+
+
+
+            $('#getPage li').on('click', function (e) {
+                var index = e.target.getAttribute("data-id");
+                //	console.log("data-id",index);
+                var currentPage = parseInt(index);
+                // console.log(arr.length)
+                render(arr, currentPage);
+                page(arr, currentPage);
+
+            })
+
+        }
+
+        function filters_fn(arrs) {
+            var ul = document.getElementById('add_application_of_special_merchant_bottom_one'); // 点击全部，编辑，申请，签约按钮的ul
+            var tbodys = document.getElementById('tbodys');
+            var li = ul.getElementsByTagName('li');
+            var i_doms = ul.getElementsByTagName('i');
+            for (var i = 0; i < li.length; i++) {
+                li[i].index = i;
+                li[i].onclick = function () {
+                    var text = this.children[0].innerHTML;
+                    tbodys.innerHTML = '';
+                    for (var n = 0; n < li.length; n++) {
+                        li[n].className = '';
+                        i_doms[n].style.display = 'none';
+                    }
+                    i_doms[this.index].style.display = 'block';
+                    this.className = "active";
+                    arr_one = [];
+                    if (text == '全部') {
+                        arr_one = arrs;
+                        render(arr_one);
+                        page(arr_one);
+                    } else if (text == '编辑中') {
+                        for (var j = 0; j < arrs.length; j++) {
+                            if (arrs[j]['applymentStatus'] == '草稿') {
+                                arr_one.push(arrs[j])
+                            }
+                        }
+                        render(arr_one);
+                        page(arr_one);
+                        if(arr_one.length==0){
+                            $('#table_p').text('未发现有编辑中的数据')
+                            $('#table_p').show();
+                            $('#table_hr').show();
+                        }else{
+                            $('#table_p').hide();
+                            $('#table_hr').hide();
+                        }
+                    } else if (text == '申请中') {
+                        for (var j = 0; j < arrs.length; j++) {
+                            if (arrs[j]['applymentStatus'] == '提交申请中') {
+                                arr_one.push(arrs[j])
+                            }
+                        }
+                        render(arr_one);
+                        page(arr_one);
+                        if(arr_one.length==0){
+                            $('#table_p').text('未发现有申请中的数据')
+                            $('#table_p').show();
+                            $('#table_hr').show();
+                        }else{
+                            $('#table_p').hide();
+                            $('#table_hr').hide();
+                        }
+                    } else if (text == '已签约') {
+                        for (var j = 0; j < arrs.length; j++) {
+                            if (arrs[j]['applymentStatus'] == '已签约') {
+                                arr_one.push(arrs[j])
+                            }
+                        }
+                        render(arr_one);
+                        page(arr_one);
+                        if(arr_one.length==0){
+                            $('#table_p').text('未发现已签约的数据')
+                            $('#table_p').show();
+                            $('#table_hr').show();
+                        }else{
+                            $('#table_p').hide();
+                            $('#table_hr').hide();
+                        }
+                    } else {
+                        for (var j = 0; j < arrs.length; j++) {
+                            if (arrs[j]['applymentStatus'] == '失效') {
+                                arr_one.push(arrs[j])
+                            }
+                        }
+                        render(arr_one);
+                        page(arr_one);
+                        if(arr_one.length==0){
+                            $('#table_p').text('未发现已失效的数据')
+                            $('#table_p').show();
+                            $('#table_hr').show();
+                        }else{
+                            $('#table_p').hide();
+                            $('#table_hr').hide();
+                        }
+                    }
+
+                }
+            }
+        }
+
+        function arr_taotal(arrs) {
+            var arr_one = [];
+            var ul = document.getElementById('add_application_of_special_merchant_bottom_one');
+            var b = ul.getElementsByTagName('b');
+            var i_doms = ul.getElementsByTagName('i');
+            for (var j = 0; j < arrs.length; j++) {
+                if (arrs[j]['applymentStatus'] == '草稿') {
+                    arr_one.push(arrs[j])
+                }
+                if (arr_one.length > 0) {
+                    b[0].innerHTML = '(' + arr_one.length + ')';
+                    var w = $('#add_application_of_special_merchant_bottom_one').children("li").eq(1).width();
+                    i_doms[1].style.width = w + 'px';
+                }
+            }
+            var arr_two = [];
+            for (var j = 0; j < arrs.length; j++) {
+                if (arrs[j]['applymentStatus'] == '提交申请中') {
+                    arr_two.push(arrs[j])
+                }
+                if (arr_two.length > 0) {
+                    b[1].innerHTML = '(' + arr_two.length + ')';
+                    var w = $('#add_application_of_special_merchant_bottom_one').children("li").eq(2).width();
+                    i_doms[2].style.width = w + 'px';
+                }
+            }
+            var arr_three = [];
+            for (var j = 0; j < arrs.length; j++) {
+                if (arrs[j]['applymentStatus'] == '已签约') {
+                    arr_three.push(arrs[j])
+                }
+                if (arr_three.length > 0) {
+                    b[2].innerHTML = '(' + arr_three.length + ')';
+                    var w = $('#add_application_of_special_merchant_bottom_one').children("li").eq(3).width();
+                    i_doms[3].style.width = w + 'px';
+                }
+            }
+            var arr_four = [];
+            for (var j = 0; j < arrs.length; j++) {
+                if (arrs[j]['applymentStatus'] == '失效') {
+                    arr_four.push(arrs[j])
+                }
+                if (arr_four.length > 0) {
+                    b[3].innerHTML = '(' + arr_four.length + ')';
+                    var w = $('#add_application_of_special_merchant_bottom_one').children("li").eq(4).width();
+                    i_doms[4].style.width = w + 'px';
+                }
+            }
+
+        }
+
+        //获取截取到的参数
+        function getUrlParam(name) {
+            var str = window.location.search.slice(1);
+            var arr = str.split('=');
+            return arr[1];
+        }
+
+        // 微信弹框
+        $('#add_li_one').click(function () {
+            authorization();
+            selectEdit_or_payment = true;
+            $('#application_details_of_alipay_wechat').show();
+            var h = 0;
+            var autoH = $('#application_of_special_merchant_main').outerHeight();
+            var windowH = $(window).height();
+            h = autoH > windowH ? autoH : windowH;
+            $('#application_details_of_alipay_wechat .top').css('height', h);
+            $('#name_shanghu_wechat').val('');
+            $('#textarea_dom_wechat').val('');
+            $('#tongdao_shanghu_wechat').attr('disabled', 'disabled');
+            $('#tongdao_shanghu_wechat').css('border', '1px solid transparent');
+            $('#tongdao_shanghu_wechat').css('background', '#ffffff');
+        })
+        $('#p_one_cancel').click(function () {
+            $('#application_details_of_alipay').hide();
+        });
+
+
+        $('#p_one').click(function () { // 支付宝特约商户申请确认事件
+            // console.log(this);
+            if ($('#name_shanghu').val().length == 0 || $('#name_shanghu').val().replace(/(^\s+)|(\s+$)/, '') ==
+                '') {
+                $('#alipay_p_name').show();
+                return;
+            }
+            var name = $('#name_shanghu').val();
+            var texts = $('#textarea_dom').val()
+            if (selectEdit_or_payment) {
+                var datas = {
+                    "mchName": name,
+                    "payType": "AliPay",
+                    "applyment": {},
+                    "remarks": texts
+                }
+                publicRequest('/payauth/api/authApplyment/add', 'POST', JSON
+                    .stringify(datas), {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    },
+                    function (res) {
+                        // console.log(res);
+                        if (res.status == 200) {
+                            $('#application_details_of_alipay').hide();
+                            window.open(res.data.url);
+                        } else if (res.status == 500) {
+                            $('#application_details_of_alipay_wechat').hide();
+                            $('#order_success_alert').show();
+                        }
+                    })
+            } else {
+                var data_change = {
+                    "baseID": arr_one[arr_index].applymentUUID,
+                    "mchName": name,
+                    "payType": "AliPay",
+                    "applyment": {},
+                    "remarks": texts,
+                    "status": "提交申请中"
+                }
+                console.log(data_change);
+                publicRequest('/payauth/api/authApplyment/update', 'POST', JSON.stringify(data_change), {
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }, function (res) {
+                    // console.log(res);
+                    if (res.status == 200) {
+                        $('#application_details_of_alipay').hide();
+                        history.go(0); // 刷新当前页面；
+                    } else if (res.status == 500) {
+                        $('#application_details_of_alipay').hide();
+                        $('#order_success_alert').show();
+                    }
+                })
+            }
+        });
+
+        $('#zhifubao_cha').click(function () {
+            $('#application_details_of_alipay').hide();
+        })
+
+        // 支付宝弹框
+        $('#wechat_cha').click(function () {
+            $('#application_details_of_alipay_wechat').hide();
+        })
+        $('#add_li_two').click(function () {
+            authorization();
+            selectEdit_or_payment = true;
+            $('#application_details_of_alipay').show();
+            var h = 0;
+            var autoH = $('#application_of_special_merchant_main').outerHeight();
+            var windowH = $(window).height();
+            h = autoH > windowH ? autoH : windowH;
+            $('#application_details_of_alipay .top').css('height', h);
+            $('#name_shanghu').val('');
+            $('#textarea_dom').val('');
+            $('#tongdao_shanghu').attr('disabled', 'disabled');
+            $('#tongdao_shanghu').css('border', '1px solid transparent');
+            $('#tongdao_shanghu').css('background', '#ffffff');
+        })
+
+        $('#p_wx_wechat').click(function () { // 微信特约商户申请 确认按钮
+            if ($('#name_shanghu_wechat').val().length == 0 || $('#name_shanghu_wechat').val().replace(
+                    /(^\s+)|(\s+$)/, '') ==
+                '') {
+                $('#wx_p_name').show();
+                return;
+            }
+
+
+            if (selectEdit_or_payment) {
+                var datas = {
+                    "mchName": $('#name_shanghu_wechat').val(),
+                    "payType": "WeChat",
+                    "applyment": {},
+                    "remarks": $('#textarea_dom_wechat').val()
+                }
+                publicRequest('/payauth/api/authApplyment/add', 'POST', JSON
+                    .stringify(datas), {
+                        'Content-Type': 'application/json'
+                    },
+                    function (res) {
+                        // console.log(res);
+                        if (res.status == 200) {
+                            window.location.href = 'authorize_wx.html';
+                        } else if (res.status == 500) {
+                            $('#application_details_of_alipay_wechat').hide();
+                            $('#order_success_alert').show();
+                        }
+                    })
+            } else {
+
+            }
+        })
+
+        // 微信特约商户申请 取消按钮
+        $('#p_wx_wechat_cancel').click(function () {
+            $('#application_details_of_alipay_wechat').hide();
+        })
+
+
+
+
+        // 错误框隐藏
+        $('#order_success_alert_cha').click(function () {
+            $('#order_success_alert').hide();
+        })
+        $('#order_success_alert_success').click(function () {
+            $('#order_success_alert').hide();
+        })
+    </script>
+
+</body>
+
+</html>

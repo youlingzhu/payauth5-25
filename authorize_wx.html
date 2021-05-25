@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap_datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+    
+    </style>
+</head>
+
+<body>
+
+    <div id="information_fill_subject_title">
+        <div id="information_fill_subject" class="information_fill"><b id="information_fill_subject_b"><img id="information_fill_subject_img" src="./img/vector_go.png"><span>主体类型</span></b></div>
+    </div>
+
+    <div id="applicationParent">
+
+
+        <!-- 这个是申请单信息，必填信息，选填信息 -->
+        <div id='Information_to_fill_out' class="Information_title_back">
+
+        </div>
+
+
+
+
+        <!-- 这个是提示到哪一步和具体的组件信息 -->
+        <div id="order_application">
+            <!-- 这个是提示到哪一步的提示框 -->
+            <div id="order_of_payment_and_registration">
+
+            </div>
+
+
+            <!-- 这个是具体的组件框 -->
+            <div class="application" id="application_list_one">
+
+            </div>
+
+            <!-- 提交信息弹框 -->
+            <div id="order_success_alert">
+
+            </div>
+
+            <div id="order_success_alert_sueccss">
+
+            </div>
+
+
+
+        </div>
+
+        <div id="bodyImg">
+            <div class="ico-cls" id="bodyImgClose"></div>
+            <div class="top" id='bodyImgTop'></div>
+            <img id="bodyImgChildren" src="" />
+        </div> 
+
+
+
+    </div>
+
+
+
+
+    <script src="./js/bootstrap/jquery.min.js"></script>
+    <script src="./js/bootstrap/bootstrap.min.js"></script>
+    <script src="./js/bootstrap/moment_with_locales.js"></script>
+    <script src="./js/bootstrap/bootstrap_datetimepicker.min.js"></script>
+
+    <!-- 上是事件插件引入的js -->
+
+    <script src="./js/authorize/json.js"></script>
+    <script src="./js/authorize/renderMatation.js"></script>
+    <script src="./js/authorize/merchantNumberRegistration.js"></script>
+    <script src="./js/authorize/registerVerification.js"></script>
+    <script src="./js/authorize/registerEvent.js"></script>
+    <script src="./js/authorize/registerComponent.js"></script>
+    <script src="./js/authorize/dataVerification.js"></script>
+    <script src="./js/authorize/data_wx.js"></script>
+    <script>
+        var subject_type = null; // 主体信息类型
+        var subject_index = null; // 选择主体信息下标
+        var subject_boolean = false; // 预览信息
+        var subject_back=false;      // 回退信息
+        var application_list_one = document.getElementById('application_list_one');
+       // console.log(wechartJson)
+       // console.log(arr_subject_type);
+        new Register(wechartJson, function () {}); // 这个是 registerEvent.js 里面的对象；专门是挂载生成的组件和input框的value值；
+        new RecursiveTool(function (res) {
+            if (res.caption == "主体资料") {
+                new RecursiveTool(function (response) { // response 是主体资料里面的值；
+                    if (response.caption == "主体类型") {
+                        //选中主体类型后通知
+                        response.generate_component(function (value, index) {
+                            subject_type = value;
+                            subject_index = index;
+                            //    console.log('subject_type',subject_type);       // 公司还是个体
+                            //   console.log('subject_index',subject_index)
+                            required_information(function (values) {
+                                var fun = eval(values);
+                                fun(values);
+                            })
+                        });
+                    }
+                }).recursive(res.subobject);
+            }
+        }).recursive(wechartJson);
+
+
+        // 主体信息
+        let SubjectInformation = function (value) {
+            application_list_one.innerHTML = '';
+            let array = wechartJson[2].subobject.filter(item => {
+                if (item.caption != "主体类型") {
+                    return item;
+                }
+            });
+            new RecursiveTool(function (response) {
+                if (response.generate_component != null && typeof response.generate_component ==
+                    'function') {
+                    // console.log(response)
+                    response.generate_component();
+                }
+            }).recursive(array);
+        }
+
+        // 经营信息
+        let ManagementInformation = function (value) {
+            application_list_one.innerHTML = '';
+            let array = wechartJson[3].subobject;
+            new RecursiveTool(function (response) {
+                if (response.generate_component != null && typeof response.generate_component ==
+                    'function') {
+                    response.generate_component();
+                }
+            }).recursive(array);
+        }
+
+        // 结算规则
+        let Settlementrules = function (value) {
+            application_list_one.innerHTML = '';
+            let array = wechartJson[4].subobject;
+            new RecursiveTool(function (response) {
+                // console.log(response);
+                if (response.generate_component != null && typeof response.generate_component ==
+                    'function') {
+                    response.generate_component();
+                }
+            }).recursive(array);
+        }
+
+        // 结算账户
+        let SettlementAccount = function (value) {
+            application_list_one.innerHTML = '';
+            let array = wechartJson[5].subobject;
+            new RecursiveTool(function (response) {
+                if (response.generate_component != null && typeof response.generate_component ==
+                    'function') {
+                    response.generate_component();
+                }
+            }).recursive(array);
+        }
+
+        // 超级管理员
+        let SuperAdmin = function (value) {
+
+            application_list_one.innerHTML = '';
+            let array = wechartJson[1].subobject;
+            new RecursiveTool(function (response) {
+                if (response.generate_component != null && typeof response.generate_component ==
+                    'function') {
+                    response.generate_component();
+                }
+            }).recursive(array);
+        }
+
+
+        window.addEventListener("popstate", function (e) {
+            // console.log("我监听到了浏览器的返回按钮事件啦"); //根据自己的需求实现自己的功能  
+            // window.location.href = 'http://127.0.0.1:5500/index.html#';
+            //  console.log(location.hash);
+            var Information_to_fill_out = document.getElementById('Information_to_fill_out');
+            var order_application = document.getElementById('order_application');
+            Information_to_fill_out.style.display = 'block';
+            order_application.style.display = 'none';
+            required_information(function (values) { // 回退的时候调用了申请单信息，必填信息，选填信息；
+                var fun = eval(values);
+                fun();
+            });
+        }, false);
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
